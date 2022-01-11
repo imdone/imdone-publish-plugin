@@ -1,0 +1,33 @@
+{
+  "name": "imdone-publish-plugin",
+  "version": "0.0.1",
+  "description": "Publish your kanban from imdone",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imdone/imdone-publish-plugin.git"
+  },
+  "keywords": [
+    "Kanban",
+    "markdown",
+    "publish"
+  ],
+  "author": "Jesse Piascik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imdone/imdone-publish-plugin/issues"
+  },
+  "homepage": "https://github.com/imdone/imdone-publish-plugin#readme",
+  "dependencies": {
+    "ecto": "^1.1.2",
+    "imdone-api": "^0.0.13"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "rollup": "^2.63.0"
+  }
+}
