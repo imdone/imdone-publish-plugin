@@ -24,6 +24,7 @@
   "homepage": "https://github.com/imdone/imdone-publish-plugin#readme",
   "dependencies": {
     "ecto": "^1.1.2",
+    "html-entities": "^2.3.2",
     "imdone-api": "^0.0.13"
   },
   "devDependencies": {

@@ -1,0 +1,13 @@
+# {{path}}
+
+{% for list in lists %}
+  {% if list.tasks.length > 0 %}
+# {{list.name}}
+    {% for task in list.tasks %}
+
+{{task.data.markdown}}
+
+---
+    {% endfor %}
+  {% endif %}
+{% endfor %}
