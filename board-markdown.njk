@@ -1,0 +1,13 @@
+{{name}}
+----
+
+- Path: `{{path}}`
+{% if filter %}- Filter: `{{filter}}`{% endif %}
+{% for list in lists %}{% if list.tasks.length > 0 %}
+{{list.name}}
+----
+{% for task in list.tasks %}
+{{task.data.rawMarkdown}}
+{% endfor %}
+---
+{% endif %}{% endfor %}

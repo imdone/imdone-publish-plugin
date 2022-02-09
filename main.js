@@ -11,8 +11,8 @@ export default class PublishPlugin extends Plugin {
     super(project)
     this.ecto = new Ecto()
     this.defaultTemplate = {
-      name: 'basic board',
-      path: _path.join('.imdone','plugins','imdone-publish-plugin','basic-board.njk')
+      name: 'board markdown',
+      path: _path.join('.imdone','plugins','imdone-publish-plugin','board-markdown.njk')
     }
   }
   
@@ -21,14 +21,19 @@ export default class PublishPlugin extends Plugin {
     const templates = this.getSettings().templates || []
     return [this.defaultTemplate, ...templates].map(({name, path}) => {
       return {
-        name: `Copy ${name} to clipboard`,
+        name: `Copy ${name} to clipboard!`,
         action: () => {
           (async () => {
             const filePath = _path.join(this.project.path, path)
             const engineName = this.ecto.getEngineByFilePath(filePath)
             try {
               const source = await fs.promises.readFile(filePath, "utf8")
-              const content = await this.ecto.render(source, {path: this.project.path, lists: this.project.lists}, engineName)
+              const content = await this.ecto.render(source, {
+                path: this.project.path,
+                name: this.project.name,
+                lists: this.project.lists,
+                filter: this.project.filter
+              }, engineName)
               this.project.copyToClipboard(decode(content), `${name} copied to clipboard!`)
             } catch (err) {
               console.log(`Error copying ${name} to clipboard`, err)
